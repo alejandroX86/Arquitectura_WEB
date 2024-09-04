@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="inputItems" placeholder="Ingrese elementos separados por comas">
+        <button id="createListButton">Crear Lista</button>
+        <div id="listContainer"></div>
+    </div>
+    <script>
+        document.getElementById('createListButton').addEventListener('click', function() {
+            const inputItems = document.getElementById('inputItems').value;
+            const itemsArray = inputItems.split(',').map(item => item.trim()).filter(item => item !== '');
+
+            if (itemsArray.length > 0) {
+                const ul = document.createElement('ul');
+                itemsArray.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+
+                const listContainer = document.getElementById('listContainer');
+                listContainer.appendChild(ul);
+            } else {
+                alert('Por favor, ingrese elementos válidos.');
+            }
+        });
+    </script>
+</body>
+</html>
+dor para ver la aplicación en funcionamiento.

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Elemento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #myDiv {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="myDiv">Este es el elemento a eliminar</div>
+        <button id="removeButton">Eliminar Elemento</button>
+    </div>
+    <script>
+        document.getElementById('removeButton').addEventListener('click', function() {
+            const myDiv = document.getElementById('myDiv');
+            myDiv.parentNode.removeChild(myDiv);
+        });
+    </script>
+</body>
+</html>

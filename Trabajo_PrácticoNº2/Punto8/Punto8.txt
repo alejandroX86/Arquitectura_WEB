@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="incrementButton">Incrementar</button>
+        <button id="decrementButton">Decrementar</button>
+        <p id="counterValue">0</p>
+    </div>
+    <script>
+        let counter = 0;
+        const counterValue = document.getElementById('counterValue');
+        const incrementButton = document.getElementById('incrementButton');
+        const decrementButton = document.getElementById('decrementButton');
+
+        incrementButton.addEventListener('click', function() {
+            counter++;
+            counterValue.textContent = counter;
+        });
+
+        decrementButton.addEventListener('click', function() {
+            counter--;
+            counterValue.textContent = counter;
+        });
+    </script>
+</body>
+</html>
+ el botón "Decrementar", el valor del contador disminuirá y se actualizará en el elemento `<p>`.

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes Dinámica</title>
+    <style>
+        .gallery {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .main-image {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .thumbnail-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <img src="" alt="Imagen principal" class="main-image" id="mainImage">
+        <div class="thumbnail-container" id="thumbnailContainer"></div>
+    </div>
+
+    <script>
+        // Lista de URLs de imágenes (reemplaza con tus propias URLs)
+        const imageUrls = [
+            'https://picsum.photos/id/1/200/200',
+            'https://picsum.photos/id/2/200/200',
+            'https://picsum.photos/id/3/200/200',
+            'https://picsum.photos/id/4/200/200'
+        ];
+
+        const mainImage = document.getElementById('mainImage');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+
+        // Función para cambiar la imagen principal
+        function changeMainImage(url) {
+            mainImage.src = url;
+        }
+
+        // Crear miniaturas y agregar eventos click
+        imageUrls.forEach((url, index) => {
+            const thumbnail = document.createElement('img');
+            thumbnail.src = url;
+            thumbnail.alt = `Miniatura ${index + 1}`;
+            thumbnail.classList.add('thumbnail');
+            thumbnail.addEventListener('click', () => changeMainImage(url));
+            thumbnailContainer.appendChild(thumbnail);
+
+            // Establecer la primera imagen como imagen principal inicialmente
+            if (index === 0) {
+                changeMainImage(url);
+            }
+        });
+    </script>
+</body>
+</html>

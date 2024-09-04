@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar y Borrar Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #cargarDatos {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #borrarDatos {
+            background-color: #f44336;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Completado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos se insertarán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button id="cargarDatos">Cargar Datos</button>
+        <button id="borrarDatos">Borrar Datos</button>
+    </div>
+
+    <script>
+        document.getElementById('cargarDatos').addEventListener('click', function() {
+            fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(data => {
+                    const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+                    tabla.innerHTML = ''; // Limpiar la tabla antes de insertar nuevos datos
+                    data.forEach(item => {
+                        const row = tabla.insertRow();
+                        const cell1 = row.insertCell(0);
+                        const cell2 = row.insertCell(1);
+                        const cell3 = row.insertCell(2);
+                        cell1.textContent = item.id;
+                        cell2.textContent = item.title;
+                        cell3.textContent = item.completed ? 'Sí' : 'No';
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('borrarDatos').addEventListener('click', function() {
+            const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            tabla.innerHTML = ''; // Vaciar la tabla
+        });
+    </script>
+</body>
+</html>
+os, la lista de datos aparece dentro de un contenedor estilizado y los botones están debajo de la lista, todo bien armonizado y con una buena experiencia de usuario.

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar y Borrar Elemento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="addButton">Agregar</button>
+        <button id="removeButton">Borrar</button>
+        <div id="textContainer"></div>
+    </div>
+    <script>
+        const textContainer = document.getElementById('textContainer');
+        const addButton = document.getElementById('addButton');
+        const removeButton = document.getElementById('removeButton');
+
+        let paragraph = null;
+
+        addButton.addEventListener('click', function() {
+            if (!paragraph) {
+                paragraph = document.createElement('p');
+                paragraph.textContent = 'Este es un elemento de texto agregado.';
+                textContainer.appendChild(paragraph);
+            }
+        });
+
+        removeButton.addEventListener('click', function() {
+            if (paragraph) {
+                textContainer.removeChild(paragraph);
+                paragraph = null;
+            }
+        });
+    </script>
+</body>
+</html>

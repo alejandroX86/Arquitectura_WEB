@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica con Fetch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="fetchDataButton">Cargar Datos</button>
+        <div id="tableContainer"></div>
+    </div>
+    <script>
+        document.getElementById('fetchDataButton').addEventListener('click', function() {
+            fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        let tableContainer = document.getElementById('tableContainer');
+                        let table = tableContainer.querySelector('table');
+
+                        // Limpiar la tabla existente si existe
+                        if (table) {
+                            tableContainer.removeChild(table);
+                        }
+
+                        // Crear una nueva tabla
+                        table = document.createElement('table');
+                        const thead = document.createElement('thead');
+                        const tbody = document.createElement('tbody');
+                        const headerRow = document.createElement('tr');
+
+                        // Crear encabezados de la tabla
+                        ['#', 'ID', 'Título', 'Completado'].forEach(headerText => {
+                            const th = document.createElement('th');
+                            th.textContent = headerText;
+                            headerRow.appendChild(th);
+                        });
+                        thead.appendChild(headerRow);
+                        table.appendChild(thead);
+                        table.appendChild(tbody);
+                        tableContainer.appendChild(table);
+
+                        // Añadir filas a la tabla
+                        data.forEach((item, index) => {
+                            const tr = document.createElement('tr');
+                            const tdIndex = document.createElement('td');
+                            const tdId = document.createElement('td');
+                            const tdTitle = document.createElement('td');
+                            const tdCompleted = document.createElement('td');
+                            tdIndex.textContent = index + 1; // Empezar desde 1
+                            tdId.textContent = item.id;
+                            tdTitle.textContent = item.title;
+                            tdCompleted.textContent = item.completed ? 'Sí' : 'No';
+                            tr.appendChild(tdIndex);
+                            tr.appendChild(tdId);
+                            tr.appendChild(tdTitle);
+                            tr.appendChild(tdCompleted);
+                            tbody.appendChild(tr);
+                        });
+                    } else {
+                        alert('No se encontraron datos.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al cargar los datos:', error);
+                    alert('Hubo un error al cargar los datos. Por favor, inténtelo de nuevo.');
+                });
+        });
+    </script>
+</body>
+</html>
+on este código, cada vez que hagas clic en el botón "Cargar Datos", se limpiará la tabla existente (si la hay) y se creará una nueva tabla con los datos obtenidos desde `https://jsonplaceholder.typicode.com/todos`, comenzando el índice desde 1.

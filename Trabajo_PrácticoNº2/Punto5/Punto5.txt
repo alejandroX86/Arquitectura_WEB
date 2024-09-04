@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="inputItems" placeholder="Ingrese elementos separados por comas">
+        <button id="createTableButton">Añadir Elemento</button>
+        <div id="tableContainer"></div>
+    </div>
+    <script>
+        let itemIndex = 1; // Inicializar el índice de elementos
+
+        document.getElementById('createTableButton').addEventListener('click', function() {
+            const inputItems = document.getElementById('inputItems').value;
+            const itemsArray = inputItems.split(',').map(item => item.trim()).filter(item => item !== '');
+            if (itemsArray.length > 0) {
+                let tableContainer = document.getElementById('tableContainer');
+                let table = tableContainer.querySelector('table');
+
+                // Si la tabla no existe, crearla
+                if (!table) {
+                    table = document.createElement('table');
+                    const thead = document.createElement('thead');
+                    const tbody = document.createElement('tbody');
+                    const headerRow = document.createElement('tr');
+
+                    // Crear encabezados de la tabla
+                    ['#', 'Elemento'].forEach(headerText => {
+                        const th = document.createElement('th');
+                        th.textContent = headerText;
+                        headerRow.appendChild(th);
+                    });
+                    thead.appendChild(headerRow);
+                    table.appendChild(thead);
+                    table.appendChild(tbody);
+                    tableContainer.appendChild(table);
+                }
+
+                // Añadir filas a la tabla
+                const tbody = table.querySelector('tbody');
+                itemsArray.forEach(item => {
+                    const tr = document.createElement('tr');
+                    const tdIndex = document.createElement('td');
+                    const tdItem = document.createElement('td');
+                    tdIndex.textContent = itemIndex++;
+                    tdItem.textContent = item;
+                    tr.appendChild(tdIndex);
+                    tr.appendChild(tdItem);
+                    tbody.appendChild(tr);
+                });
+            } else {
+                alert('Por favor, ingrese elementos válidos.');
+            }
+        });
+    </script>
+</body>
+</html>
+la a la tabla existente, incrementando el número de índice sin necesidad de crear una nueva tabla.

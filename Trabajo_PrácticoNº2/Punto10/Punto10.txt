@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Validación</title>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .success {
+            color: green;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <form id="miFormulario" onsubmit="return validarFormulario()">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <span id="errorNombre" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido">
+            <span id="errorApellido" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="text" id="edad" name="edad">
+            <span id="errorEdad" class="error"></span>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="mensajeExito" class="success"></div>
+
+    <script>
+        function validarFormulario() {
+            // Limpiar mensajes de error
+            document.getElementById('errorNombre').innerText = '';
+            document.getElementById('errorApellido').innerText = '';
+            document.getElementById('errorEdad').innerText = '';
+            document.getElementById('mensajeExito').innerText = '';
+
+            // Obtener valores de los campos
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var edad = document.getElementById('edad').value;
+
+            // Validar que los campos no estén vacíos
+            if (nombre.trim() === '') {
+                document.getElementById('errorNombre').innerText = 'El nombre es obligatorio';
+                return false;
+            }
+            if (apellido.trim() === '') {
+                document.getElementById('errorApellido').innerText = 'El apellido es obligatorio';
+                return false;
+            }
+            if (edad.trim() === '') {
+                document.getElementById('errorEdad').innerText = 'La edad es obligatoria';
+                return false;
+            }
+
+            // Validar que la edad sea un número positivo
+            if (isNaN(edad) || parseInt(edad) <= 0) {
+                document.getElementById('errorEdad').innerText = 'La edad debe ser un número positivo';
+                return false;
+            }
+
+            // Si todos los campos son válidos, mostrar mensaje de éxito
+            document.getElementById('mensajeExito').innerText = 'Formulario enviado correctamente';
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+Con estos cambios, el formulario ahora tiene un aspecto más moderno y es más fácil de usar.
