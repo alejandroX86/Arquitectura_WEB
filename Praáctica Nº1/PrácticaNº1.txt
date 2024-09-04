@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNPAZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo, .social-icons, .date {
+            flex: 1;
+        }
+        .social-icons {
+            text-align: center;
+        }
+        .date {
+            text-align: right;
+        }
+        .nav {
+            background-color: #ddd;
+            padding: 10px 0;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            gap: 10px;
+            height: 155px;
+        }
+        .side-images {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .image-container {
+            width: 150px;
+            height: 75px;
+            background-color: orange;
+        }
+        .central-image {
+            width: 300px;
+            height: 155px;
+            background-color: orange;
+        }
+        .quick-links {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .quick-link {
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+        }
+        .news-events {
+            display: flex;
+            justify-content: space-around;
+        }
+        .news, .events {
+            width: 45%;
+        }
+        .news h2, .events h2 {
+            background-color: orange;
+            padding: 10px;
+            margin: 0;
+        }
+        .news ul, .events ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer {
+            background-color: orange;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">LOGO</div>
+        <div class="social-icons">ICONOS REDES</div>
+        <div class="date">FECHA</div>
+    </header>
+    
+    <nav class="nav">
+        <ul>
+            <li>CARRERAS</li>
+            <li>ESTUDIA EN UNPAZ</li>
+            <li>INGRESANTES</li>
+            <li>ESTUDIANTES</li>
+            <li>GRADUADOS</li>
+            <li>POSTGRADO</li>
+        </ul>
+    </nav>
+    
+    <main class="main-content">
+        <div class="side-images">
+            <div class="image-container">IMAGEN UNPAZ</div>
+            <div class="image-container">IMAGEN UNPAZ</div>
+        </div>
+        <div class="central-image">IMAGEN UNPAZ</div>
+        <div class="side-images">
+            <div class="image-container">IMAGEN UNPAZ</div>
+            <div class="image-container">IMAGEN UNPAZ</div>
+        </div>
+    </main>
+    
+    <div class="quick-links">
+        <div class="quick-link">SIU GUARANÍ</div>
+        <div class="quick-link">CALENDARIO ACADÉMICO</div>
+        <div class="quick-link">CAMPUS VIRTUAL</div>
+        <div class="quick-link">BIBLIOTECA</div>
+    </div>
+    
+    <div class="news-events">
+        <div class="news">
+            <h2>NOTICIAS</h2>
+            <ul>
+                <li>NOTICIAS SOBRE...</li>
+            </ul>
+        </div>
+        <div class="events">
+            <h2>AGENDA</h2>
+            <ul>
+                <li>AGENDA SOBRE...</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        UNIVERSIDAD NACIONAL DE JOSÉ C. PAZ<br>
+        Leandro N. Alem #4731, José C. Paz (C.P. 1665) | Prov. Buenos Aires | Argentina<br>
+        Dirección de Prensa y Comunicación: comunicacion@unpaz.edu.ar
+    </footer>
+</body>
+</html>
